@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-service # this is important because other services depend on this name
+  labels:
+    name: result-service  # this also
+    app: demo-voting-app
+spec:
+  type: NodePort # this is important because we need to access the service from outside the cluster, othewise this will be of type ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30005
+  selector:
+    name: result-app-pod
+    app: demo-voting-app
