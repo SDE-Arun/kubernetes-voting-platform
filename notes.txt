@@ -1,0 +1,16 @@
+** we need to make sure that labels used in selector of RS should be same as the labels used in the pod template of the RS. **
+
+==> If we create a pod apart from our RS {which is in running state} and this have same label as the RS, then this Pod will already will be in terminating state ...
+... because RS will try to maintain the number of replicas and it will create a new pod with the same label as the RS and it will terminate the old pod.
+
+
+kubectl edit rs replicaset_name_file.yaml  -->
+-----------------------------------------
+This will open the replicaset in the default editor and you can edit the fields like increasing the replicas, changing the image etc.
+
+
+kubectl scale replicaset replicaset_name_file.yaml --replicas=5  --> 
+---------------------------------------------------------------
+This will scale the replicaset to 5 replicas from the current number of replicas with the help of terminal.
+
+

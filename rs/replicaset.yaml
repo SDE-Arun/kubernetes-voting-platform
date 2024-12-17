@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp #* This will matter when we create the pod template below 
+  replicas: 3
+  template:
+    metadata:
+      name: nginx-2
+      labels:
+        app: myapp #! **we need to make sure that labels that we use in the selector are same we use in the pod template or here in the template
+    spec:
+      containers:
+        - name: nginx
+          image: nginx

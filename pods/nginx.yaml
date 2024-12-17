@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-2
+  labels:
+    # env: production # --> This is normal label
+    app: myapp # --> we are changing this label to check, how will RS react 
+spec:
+  containers:
+    - name: nginx
+      image: nginx
